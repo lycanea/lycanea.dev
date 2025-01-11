@@ -1,0 +1,17 @@
+.mainBody {
+    background-color: rgba(21, 31, 80, 0.7);
+    /* display: inline-block; */
+    text-align: center;
+    padding: 1rem; /* Optional padding */
+    border-radius: 15px;
+    width: 1000px;
+    backdrop-filter: blur(4px);
+}
+
+.content {
+    text-align: left;
+}
+
+.markdownContent {
+    
+}

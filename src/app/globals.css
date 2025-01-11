@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: url(/tilebackground.png) repeat;
+  --foreground: #f3e5e4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: url(/tilebackgrounddark.png) repeat;
+    --foreground: #f3e5e4;
+  }
+}
+
+@keyframes backgroundscroll {
+  from {
+      background-position: 0 0;
+  }
+  to {
+      background-position: 100px 100px;
+  }
+}
+
+body {
+  /* background: url(/tilebackground.png) repeat; */
+  animation: backgroundscroll 5s infinite linear;
+  color: var(--foreground);
+  background: var(--background);
+  background-size: 100px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: xx-large;
+}
+h2 {
+  font-size: x-large;
+}
+h3 {
+  font-size: large;
+}
