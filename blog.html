@@ -1,7 +1,7 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charSet="utf-8"/>
-    <!-- <link rel="preload" as="image" href="./meowguard.png"/> -->
+    <meta charset="utf-8"/>
     <link rel="stylesheet" href="/index.css"/>
     <link rel="icon" href="/favicon.ico" sizes="32x32"/>
     <title>Lycanea's Thoughts</title>
@@ -9,14 +9,45 @@
 <body>
     <div style="display:block;background-color:rgba(0, 0, 0, 0.5);padding:5px;margin:5px;border-radius:15px;text-align:left;backdrop-filter:blur(4px)">
         <a style="margin:5px" class="toplink" href="/">Home</a>
-        <a style="margin:5px" class="toplink" href="/blog.html">Blog</a>
-        <a style="margin:5px" class="toplink" href="/about.html">Who is lycanea?</a>
+        <a style="margin:5px" class="toplink" href="/blog">Blog</a>
+        <a style="margin:5px" class="toplink" href="/about">Who is lycanea?</a>
     </div>
     <main>
-        <ul>
-            <div class="mainBody">
-                <p>website currently being rewritten, blog unavailable (it was unused anyway lmao)</p>
-            </div>
-        </ul>
+        <div class="mainBody">
+            <p>THE NEW BLOG SYSTEM IS VERY WIP SORRY :sob:</p>
+            <ul id="blog-posts">
+                <div class="mainBody">
+                    <p>Loading blog posts...</p>
+                </div>
+            </ul>
+        </div>
     </main>
+
+    <script>
+        async function fetchBlogPosts() {
+            try {
+                const response = await fetch('https://api.lycanea.dev/posts');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const posts = await response.json();
+                const postsList = document.getElementById('blog-posts');
+                postsList.innerHTML = ''; // Clear loading message
+
+                posts.forEach(post => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = post.title; // Assuming each post has a 'title' property
+                    postsList.appendChild(listItem);
+                });
+            } catch (error) {
+                console.error('Error fetching blog posts:', error);
+                const postsList = document.getElementById('blog-posts');
+                postsList.innerHTML = '<li>Error loading posts. Please try again later.</li>';
+            }
+        }
+
+        // Fetch blog posts when the page loads
+        window.onload = fetchBlogPosts;
+    </script>
 </body>
+</html>
