@@ -1,0 +1,26 @@
+.video-container {
+	width: fit-content;
+	height: fit-content;
+}
+  
+.video-container video {
+	width: 640px;
+	height: 360px;
+  
+	image-rendering: optimizeSpeed;
+	image-rendering: -moz-crisp-edges; /* firefox */
+	image-rendering: -webkit-optimize-contrast; /* safari */
+	image-rendering: optimize-contrast;
+	image-rendering: pixelated; /* every other browser i think */
+
+	object-fit: contain;
+}
+  
+.controls {
+	margin-top: 10px;
+}
+  
+.controls button {
+	margin-right: 5px;
+}
+  
